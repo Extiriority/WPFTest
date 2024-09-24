@@ -54,6 +54,7 @@
         <Compile Include="ViewModels\MainViewModel.cs" />
         <Compile Include="ViewModels\MakeReservationViewModel.cs" />
         <Compile Include="ViewModels\ReservationListingViewModel.cs" />
+        <Compile Include="ViewModels\ReservationViewModel.cs" />
         <Compile Include="ViewModels\ViewModelBase.cs" />
         <Compile Include="Views\MakeReservationView.xaml.cs">
           <DependentUpon>MakeReservationView.xaml</DependentUpon>
