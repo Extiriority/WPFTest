@@ -1,12 +1,14 @@
-﻿namespace WPFTest.ViewModels
+﻿using WPFTest.Models;
+
+namespace WPFTest.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
         public ViewModelBase CurrentViewModel { get; }
-        
-        public MainViewModel()
+
+        public MainViewModel(IReservationBook reservationBook)
         {
-            CurrentViewModel = new ReservationListingViewModel();
+            CurrentViewModel = new ReservationListingViewModel(reservationBook);
         }
     }
 }

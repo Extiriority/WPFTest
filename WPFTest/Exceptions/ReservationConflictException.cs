@@ -6,27 +6,27 @@ namespace WPFTest.Exceptions
 {
     public class ReservationConflictException : Exception
     {
-        public Reservation ExistingReservation { get; }
-        public Reservation IncomingReservation { get; }
-        public ReservationConflictException(Reservation existingReservation, Reservation incomingReservation)
+        public IReservation ExistingReservation { get; }
+        public IReservation IncomingReservation { get; }
+        public ReservationConflictException(IReservation existingReservation, IReservation incomingReservation)
         {
             ExistingReservation = existingReservation;
             IncomingReservation = incomingReservation;
         }
 
-        public ReservationConflictException(string message, Reservation existingReservation, Reservation incomingReservation) : base(message)
+        public ReservationConflictException(string message, IReservation existingReservation, IReservation incomingReservation) : base(message)
         {
             ExistingReservation = existingReservation;
             IncomingReservation = incomingReservation;
         }
 
-        public ReservationConflictException(string message, Exception innerException, Reservation existingReservation, Reservation incomingReservation) : base(message, innerException)
+        public ReservationConflictException(string message, Exception innerException, IReservation existingReservation, IReservation incomingReservation) : base(message, innerException)
         {
             ExistingReservation = existingReservation;
             IncomingReservation = incomingReservation;
         }
 
-        protected ReservationConflictException(SerializationInfo info, StreamingContext context, Reservation existingReservation, Reservation incomingReservation) : base(info, context)
+        protected ReservationConflictException(SerializationInfo info, StreamingContext context, IReservation existingReservation, IReservation incomingReservation) : base(info, context)
         {
             ExistingReservation = existingReservation;
             IncomingReservation = incomingReservation;

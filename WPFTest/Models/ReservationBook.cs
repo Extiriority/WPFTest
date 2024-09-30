@@ -4,23 +4,18 @@ using WPFTest.Exceptions;
 
 namespace WPFTest.Models
 {
-    public class ReservationBook
+    public class ReservationBook : IReservationBook
     {
-       private readonly List<Reservation> _reservations;
+       private readonly List<IReservation> _reservations = new List<IReservation>();
 
-       public ReservationBook()
+       public IEnumerable<IReservation> GetAllReservations() => _reservations;
+
+       public void AddReservation(IReservation reservation)
        {
-              _reservations = new List<Reservation>();
-       }
-       
-       public IEnumerable<Reservation> GetAllReservations() => _reservations;
-       
-       
-       public void AddReservation(Reservation reservation)
-       {
-          foreach (var existingReservation in _reservations.Where(existingReservation => existingReservation.ConflictsWith(reservation)))
+          if (_reservations.Exists(existingReservation => existingReservation.ConflictsWith(reservation)))
           {
-             throw new ReservationConflictException(existingReservation, reservation); 
+             var conflictingReservation = _reservations.First(existingReservation => existingReservation.ConflictsWith(reservation));
+             throw new ReservationConflictException(conflictingReservation, reservation);
           }
 
           _reservations.Add(reservation);
